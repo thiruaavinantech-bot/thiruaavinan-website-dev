@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thiru Aavinan Technologies | Gen AI Academy & Digital Services in Palani</title>
+<meta name="description" content="Thiru Aavinan Technologies, Palani — Gen AI Academy, Financial Solutions, Business Solutions and Common E-Services under one roof.">
+<meta name="theme-color" content="#ffffff">
+
+<!-- Fonts: one for English (Plus Jakarta Sans), one for Tamil (Noto Sans Tamil).
+     The "code" font is the computer's own monospace font, so nothing extra downloads. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Favicon (browser tab icon) + phone home-screen icon -->
+<link rel="icon" type="image/png" href="assets/images/logo-icon.png">
+<link rel="apple-touch-icon" href="assets/images/logo-icon.png">
+
+<!-- All page styles live in this one file -->
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ICON SET: each <symbol> is drawn once here, then reused with <svg><use href="#i-name"/></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3.5 2.2 8.5 2.2 12 0v-5"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2.5"/><path d="M16 6V4.5A1.5 1.5 0 0 0 14.5 3H5.5A2.5 2.5 0 0 0 3 5.5"/><path d="M16.5 13h1"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 13h18"/></symbol>
+    <symbol id="i-landmark" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 18v-7M9.5 18v-7M14.5 18v-7M19 18v-7"/><path d="M2.5 9 12 3l9.5 6Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-lang" viewBox="0 0 24 24"><path d="M3 5h9M7.5 3v2M5 5c.5 3.5 3 6.5 7 8M10 5c-.5 3.5-3 6.5-7 8"/><path d="m13 21 4-9 4 9M14.4 18h5.2"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-5.5 7-5.5s7 2 7 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c2.4.6 4 2.3 4 5.2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8Z"/><path d="M19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8Z"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="m7 9 3 3-3 3M12 15h5"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+  </defs>
+</svg>
+
+<!-- Thin gradient bar at the very top that fills as you scroll -->
+<div class="scroll-progress" id="progress" aria-hidden="true"></div>
+
+
+<!-- ================= HEADER ================= -->
+<header class="site-header" id="header">
+  <div class="container nav">
+    <!-- The logo is black + navy, so it sits on a small white plate on this dark site -->
+    <a href="#home" class="logo-plate" aria-label="Thiru Aavinan Technologies — home">
+      <img src="assets/images/logo-full-transparent.png" alt="Thiru Aavinan Technologies" width="145" height="40">
+    </a>
+
+    <nav class="menu" id="menu" aria-label="Main">
+      <a href="#services" data-en="Services" data-ta="சேவைகள்">Services</a>
+      <a href="#academy" data-en="Academy" data-ta="அகாடமி">Academy</a>
+      <a href="#about" data-en="About" data-ta="எங்களைப் பற்றி">About</a>
+      <a href="#faq" data-en="FAQ" data-ta="கேள்விகள்">FAQ</a>
+      <a href="#contact" data-en="Contact" data-ta="தொடர்புக்கு">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <!-- Language switch: the highlighted side is the current language -->
+      <button class="lang-switch" id="langBtn" type="button" aria-label="Switch language between English and Tamil">
+        <span class="l-en">EN</span><span class="l-ta">தமிழ்</span>
+      </button>
+      <a href="#contact" class="btn btn-glow btn-sm nav-cta"><span data-en="Enroll" data-ta="சேருங்கள்">Enroll</span><svg><use href="#i-arrow"/></svg></a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <svg><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <!-- Flowing colour mesh: soft colour blobs that drift and blend (all CSS, see "Hero background" in style.css).
+       The last blob (#meshFollow) gently follows the mouse — moved by main.js. -->
+  <div class="hero-mesh" aria-hidden="true">
+    <span class="m1"></span><span class="m2"></span><span class="m3"></span><span class="m4"></span><span class="m5"></span>
+    <span class="m-follow" id="meshFollow"></span>
+  </div>
+
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      <a href="#academy" class="announce">
+        <span class="live-dot"></span>
+        <span data-en="Batch 01 · starts 19 Nov 2026" data-ta="பேட்ச் 01 · 19 நவ. 2026 தொடக்கம்">Batch 01 · starts 19 Nov 2026</span>
+        <svg><use href="#i-arrow"/></svg>
+      </a>
+      <h1 data-en="Your career, <span class='grad'>upgraded with Gen AI.</span>" data-ta="<span class='grad'>ஜென் AI</span> உடன் உங்கள் தொழில் வாழ்க்கையை மேம்படுத்துங்கள்.">Your career, <span class="grad">upgraded with Gen AI.</span></h1>
+      <p class="lead" data-en="Learn to use AI the way the industry does — in Tamil and English, right here in Palani. Plus financial, business and government e-services under one roof." data-ta="தொழில்துறை பயன்படுத்தும் விதத்தில் AI-ஐக் கற்றுக்கொள்ளுங்கள் — தமிழிலும் ஆங்கிலத்திலும், பழனியிலேயே. மேலும் நிதி, வணிக மற்றும் அரசு இ-சேவைகள் ஒரே இடத்தில்.">Learn to use AI the way the industry does — in Tamil and English, right here in Palani. Plus financial, business and government e-services under one roof.</p>
+      <div class="hero-btns">
+        <a href="#academy" class="btn btn-glow"><span data-en="Start learning" data-ta="கற்கத் தொடங்குங்கள்">Start learning</span><svg><use href="#i-arrow"/></svg></a>
+        <a href="#services" class="btn btn-glass" data-en="Explore services" data-ta="சேவைகளைப் பாருங்கள்">Explore services</a>
+      </div>
+      <p class="hero-meta"><span>// 20 days</span><span>₹2,000</span><span>Tamil + English</span><span>MSME registered</span></p>
+    </div>
+
+    <!-- Hero visual: a terminal that "enrolls" a student, typed out by main.js -->
+    <div class="hero-visual reveal">
+    <div class="terminal" id="tilt" aria-label="Animated terminal showing the course details">
+      <div class="term-bar">
+        <span class="tb-dots"><i></i><i></i><i></i></span>
+        <span class="tb-title"><svg><use href="#i-terminal"/></svg>student@palani — thiru-ai</span>
+      </div>
+      <div class="term-body" id="term" aria-hidden="true"></div>
+      <!-- Plain text version for screen readers and search engines -->
+      <p class="sr-only">Career Building with Gen AI: for college students and job seekers, taught in Tamil and English, 20 days in Palani, fee ₹2,000, starts 19 November 2026.</p>
+    </div>
+    <!-- Little floating badges around the terminal -->
+    <div class="float-chip fc-1"><span class="fc-ic">✦</span><span data-en="AI resume in class" data-ta="வகுப்பிலேயே AI ரெஸ்யூம்">AI resume in class</span></div>
+    <div class="float-chip fc-2"><span class="fc-ic">🎓</span><span data-en="Certificate included" data-ta="சான்றிதழ் உண்டு">Certificate included</span></div>
+    </div>
+  </div>
+
+  <!-- Scrolling skills strip -->
+  <div class="marquee" aria-label="Skills you will learn">
+    <div class="marquee-track">
+      <ul>
+        <li>ChatGPT</li><li>Claude</li><li>Gemini</li><li>Career planning with AI</li><li>AI resume building</li><li>Smart job hunting</li><li>Communicative English</li><li>Personality development</li><li>Hands-on AI tools</li>
+      </ul>
+      <ul aria-hidden="true">
+        <li>ChatGPT</li><li>Claude</li><li>Gemini</li><li>Career planning with AI</li><li>AI resume building</li><li>Smart job hunting</li><li>Communicative English</li><li>Personality development</li><li>Hands-on AI tools</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Key numbers (they count up when they scroll into view) -->
+  <div class="container">
+    <dl class="stats reveal">
+      <div><dt><span data-count="4">4</span></dt><dd data-en="Service lines" data-ta="சேவைப் பிரிவுகள்">Service lines</dd></div>
+      <div><dt><span data-count="20">20</span></dt><dd data-en="Day career course" data-ta="நாள் பாடநெறி">Day career course</dd></div>
+      <div><dt><span data-count="2">2</span></dt><dd data-en="Teaching languages" data-ta="கற்பித்தல் மொழிகள்">Teaching languages</dd></div>
+      <div><dt><span data-count="100">100</span>%</dt><dd data-en="Practical training" data-ta="நடைமுறை பயிற்சி">Practical training</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">01 / <span data-en="What we do" data-ta="எங்கள் சேவைகள்">What we do</span></span>
+      <h2 data-en="Four services. <span class='grad'>One trusted place.</span>" data-ta="நான்கு சேவைகள். <span class='grad'>ஒரே நம்பகமான இடம்.</span>">Four services. <span class="grad">One trusted place.</span></h2>
+      <p data-en="From learning new-age skills to getting your certificates done — we help the people of Palani and nearby areas move forward." data-ta="புதிய திறன்களைக் கற்பது முதல் சான்றிதழ்கள் பெறுவது வரை — பழனி மற்றும் சுற்றுவட்டார மக்களுக்கு உதவுகிறோம்.">From learning new-age skills to getting your certificates done — we help the people of Palani and nearby areas move forward.</p>
+    </div>
+
+    <!-- "Bento" grid. Each card sets its own colour with --c. The light follows your mouse (main.js). -->
+    <div class="bento">
+      <article class="card svc svc-wide spot reveal" style="--c:var(--academy)">
+        <div class="svc-top"><span class="svc-icon"><svg><use href="#i-cap"/></svg></span><span class="svc-tag" data-en="Flagship" data-ta="முதன்மை">Flagship</span></div>
+        <h3 data-en="Gen AI Academy" data-ta="ஜென் AI அகாடமி">Gen AI Academy</h3>
+        <p data-en="Career-focused AI training in Tamil & English." data-ta="தமிழ் & ஆங்கிலத்தில் தொழில் சார்ந்த AI பயிற்சி.">Career-focused AI training in Tamil &amp; English.</p>
+        <ul class="pills"><li>ChatGPT, Claude &amp; Gemini</li><li>AI resume &amp; job search</li><li>Communicative English</li><li>Personality development</li></ul>
+        <a href="#academy" class="svc-link"><span data-en="See the course" data-ta="பாடநெறியைப் பாருங்கள்">See the course</span><svg><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="card svc spot reveal" style="--c:var(--finance)">
+        <div class="svc-top"><span class="svc-icon"><svg><use href="#i-wallet"/></svg></span><span class="svc-num">02</span></div>
+        <h3 data-en="Financial Solutions" data-ta="நிதி தீர்வுகள்">Financial Solutions</h3>
+        <p data-en="Guidance for everyday money matters." data-ta="அன்றாட நிதி விஷயங்களுக்கான வழிகாட்டுதல்.">Guidance for everyday money matters.</p>
+        <ul class="pills"><li>Loan guidance</li><li>Insurance support</li><li>Government schemes</li><li>Financial awareness</li></ul>
+      </article>
+
+      <article class="card svc spot reveal" style="--c:var(--business)">
+        <div class="svc-top"><span class="svc-icon"><svg><use href="#i-briefcase"/></svg></span><span class="svc-num">03</span></div>
+        <h3 data-en="Business Solutions" data-ta="வணிக தீர்வுகள்">Business Solutions</h3>
+        <p data-en="Take your local business digital." data-ta="உங்கள் வணிகத்தை டிஜிட்டல் ஆக்குங்கள்.">Take your local business digital.</p>
+        <ul class="pills"><li>MSME / Udyam registration</li><li>GST &amp; filings</li><li>Websites &amp; Google profile</li><li>AI for small business</li></ul>
+      </article>
+
+      <article class="card svc svc-wide spot reveal" style="--c:var(--eservices)">
+        <div class="svc-top"><span class="svc-icon"><svg><use href="#i-landmark"/></svg></span><span class="svc-num">04</span></div>
+        <h3 data-en="Common E-Services" data-ta="பொது இ-சேவைகள்">Common E-Services</h3>
+        <p data-en="Government services made simple through our CSC centre." data-ta="எங்கள் CSC மையம் மூலம் அரசு சேவைகள் எளிமையாக.">Government services made simple through our CSC centre.</p>
+        <ul class="pills"><li>Certificates &amp; applications</li><li>PAN &amp; Aadhaar services</li><li>Online form filling</li><li>Bill payments &amp; printing</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACADEMY / COURSE ================= -->
+<section class="section" id="academy">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">02 / <span data-en="Flagship course" data-ta="முதன்மை பாடநெறி">Flagship course</span></span>
+      <h2>Career Building with <span class="grad">Gen AI</span></h2>
+      <p data-en="A 20-day practical course for college students and job seekers — designed to lead to real job opportunities in Palani, nearby towns and across Tamil Nadu." data-ta="கல்லூரி மாணவர்கள் மற்றும் வேலை தேடுவோருக்கான 20 நாள் நடைமுறை பாடநெறி — பழனி மற்றும் தமிழ்நாடு முழுவதும் வேலை வாய்ப்புகளை நோக்கி.">A 20-day practical course for college students and job seekers — designed to lead to real job opportunities in Palani, nearby towns and across Tamil Nadu.</p>
+    </div>
+
+    <div class="course">
+      <!-- Curriculum shown like a code editor's file list -->
+      <div class="card editor reveal">
+        <div class="editor-bar">
+          <span class="tab active"><svg><use href="#i-folder"/></svg>curriculum</span>
+          <span class="tab">README.md</span>
+        </div>
+        <ol class="modules">
+          <li><span class="ln">01</span><span class="file" data-en="Career planning with AI" data-ta="AI உடன் தொழில் திட்டமிடல்">Career planning with AI</span><span class="st">✓</span></li>
+          <li><span class="ln">02</span><span class="file" data-en="AI resume building" data-ta="AI ரெஸ்யூம் உருவாக்கம்">AI resume building</span><span class="st">✓</span></li>
+          <li><span class="ln">03</span><span class="file" data-en="Smart job hunting" data-ta="திறமையான வேலை தேடல்">Smart job hunting</span><span class="st">✓</span></li>
+          <li><span class="ln">04</span><span class="file" data-en="Communicative English" data-ta="பேச்சு ஆங்கிலம்">Communicative English</span><span class="st">✓</span></li>
+          <li><span class="ln">05</span><span class="file" data-en="Personality development" data-ta="ஆளுமை மேம்பாடு">Personality development</span><span class="st">✓</span></li>
+          <li><span class="ln">06</span><span class="file" data-en="Hands-on AI tools" data-ta="நேரடி AI கருவிப் பயிற்சி">Hands-on AI tools</span><span class="st">✓</span></li>
+        </ol>
+        <p class="editor-foot"><span class="g">●</span> <span data-en="Self-learners, beginners and advanced students — every level guided." data-ta="சுயமாகக் கற்போர், தொடக்கநிலை மற்றும் மேம்பட்ட மாணவர்கள் — அனைவருக்கும் வழிகாட்டல்.">Self-learners, beginners and advanced students — every level guided.</span></p>
+      </div>
+
+      <!-- Price + countdown -->
+      <aside class="card price-card reveal">
+        <span class="badge-live"><span></span><span data-en="Admissions open" data-ta="சேர்க்கை நடைபெறுகிறது">Admissions open</span></span>
+        <div class="price">₹2,000<small>/ 20 <span data-en="days" data-ta="நாட்கள்">days</span></small></div>
+
+        <p class="cd-label" data-en="Batch 01 starts in" data-ta="பேட்ச் 01 தொடங்க">Batch 01 starts in</p>
+        <div class="countdown">
+          <div><b id="cd-d">0</b><span data-en="Days" data-ta="நாள்">Days</span></div>
+          <div><b id="cd-h">00</b><span data-en="Hrs" data-ta="மணி">Hrs</span></div>
+          <div><b id="cd-m">00</b><span data-en="Min" data-ta="நிமி">Min</span></div>
+          <div><b id="cd-s">00</b><span data-en="Sec" data-ta="வினா">Sec</span></div>
+        </div>
+
+        <ul class="includes">
+          <li><svg><use href="#i-check"/></svg><span data-en="Classroom training in Palani" data-ta="பழனியில் வகுப்பறைப் பயிற்சி">Classroom training in Palani</span></li>
+          <li><svg><use href="#i-check"/></svg><span data-en="Tamil + English teaching" data-ta="தமிழ் + ஆங்கிலத்தில் கற்பித்தல்">Tamil + English teaching</span></li>
+          <li><svg><use href="#i-check"/></svg><span data-en="Course book & practice tasks" data-ta="பாடப் புத்தகம் & பயிற்சிப் பணிகள்">Course book &amp; practice tasks</span></li>
+          <li><svg><use href="#i-check"/></svg><span data-en="Certificate of completion" data-ta="நிறைவுச் சான்றிதழ்">Certificate of completion</span></li>
+        </ul>
+        <a href="#contact" class="btn btn-glow btn-block"><span data-en="Reserve my seat" data-ta="இடத்தை முன்பதிவு செய்">Reserve my seat</span><svg><use href="#i-arrow"/></svg></a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY US ================= -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">03 / <span data-en="Why choose us" data-ta="ஏன் நாங்கள்">Why choose us</span></span>
+      <h2 data-en="Technology for <span class='grad'>local careers.</span>" data-ta="உள்ளூர் <span class='grad'>தொழில் வாய்ப்புகளுக்கான</span> தொழில்நுட்பம்.">Technology for <span class="grad">local careers.</span></h2>
+      <p data-en="Every technology update, turned into career creation and skill development for our local community." data-ta="ஒவ்வொரு தொழில்நுட்ப மாற்றமும் — நம் ஊர் மக்களின் தொழில் வளர்ச்சிக்காக.">Every technology update, turned into career creation and skill development for our local community.</p>
+    </div>
+
+    <div class="features">
+      <div class="card feature spot reveal"><span class="f-icon"><svg><use href="#i-lang"/></svg></span><h3 data-en="Learn in Tamil" data-ta="தமிழில் கற்கலாம்">Learn in Tamil</h3><p data-en="AI explained in the language you think in — no fear of English jargon." data-ta="உங்கள் சொந்த மொழியில் AI — ஆங்கிலச் சொற்களைப் பற்றி பயம் வேண்டாம்.">AI explained in the language you think in — no fear of English jargon.</p></div>
+      <div class="card feature spot reveal"><span class="f-icon"><svg><use href="#i-user"/></svg></span><h3 data-en="Qualified trainer" data-ta="தகுதியான பயிற்றுநர்">Qualified trainer</h3><p data-en="Led by an MCA & MBA graduate with real software and MERN stack experience." data-ta="மென்பொருள் மற்றும் MERN ஸ்டாக் அனுபவம் கொண்ட MCA & MBA பட்டதாரி வழிநடத்துகிறார்.">Led by an MCA &amp; MBA graduate with real software and MERN stack experience.</p></div>
+      <div class="card feature spot reveal"><span class="f-icon"><svg><use href="#i-target"/></svg></span><h3 data-en="Career-first" data-ta="தொழிலே முதன்மை">Career-first</h3><p data-en="We don't teach AI for its own sake — we teach it to help you get hired." data-ta="AI-ஐ வெறுமனே கற்பிப்பதில்லை — உங்களுக்கு வேலை கிடைக்க உதவவே கற்பிக்கிறோம்.">We don't teach AI for its own sake — we teach it to help you get hired.</p></div>
+      <div class="card feature spot reveal"><span class="f-icon"><svg><use href="#i-badge"/></svg></span><h3 data-en="MSME registered" data-ta="MSME பதிவு பெற்றது">MSME registered</h3><p data-en="A recognised local business you can trust with your learning and documents." data-ta="உங்கள் கல்வி மற்றும் ஆவணங்களுக்கு நம்பகமான உள்ளூர் நிறுவனம்.">A recognised local business you can trust with your learning and documents.</p></div>
+      <div class="card feature spot reveal"><span class="f-icon"><svg><use href="#i-users"/></svg></span><h3 data-en="Community driven" data-ta="சமூகத்துடன் வளர்ச்சி">Community driven</h3><p data-en="Join a growing local network of learners from the very first batch." data-ta="முதல் பேட்சிலிருந்தே வளர்ந்து வரும் உள்ளூர் கற்போர் குழுவில் இணையுங்கள்.">Join a growing local network of learners from the very first batch.</p></div>
+      <div class="card feature spot reveal"><span class="f-icon"><svg><use href="#i-pin"/></svg></span><h3 data-en="All in one place" data-ta="அனைத்தும் ஒரே இடத்தில்">All in one place</h3><p data-en="Training, finance help, business setup and e-services — one visit." data-ta="பயிற்சி, நிதி உதவி, வணிக அமைப்பு மற்றும் இ-சேவைகள் — ஒரே வருகையில்.">Training, finance help, business setup and e-services — one visit.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS (a "pipeline" of 4 steps) ================= -->
+<section class="section" id="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">04 / <span data-en="How it works" data-ta="எப்படி செயல்படுகிறது">How it works</span></span>
+      <h2 data-en="Your journey <span class='grad'>with us.</span>" data-ta="எங்களுடன் <span class='grad'>உங்கள் பயணம்.</span>">Your journey <span class="grad">with us.</span></h2>
+      <p data-en="Simple steps from first enquiry to career-ready." data-ta="முதல் விசாரணை முதல் வேலைக்குத் தயாராகும் வரை எளிய படிகள்.">Simple steps from first enquiry to career-ready.</p>
+    </div>
+    <ol class="pipeline">
+      <li class="reveal"><span class="node">01</span><div class="card step"><h3 data-en="Enquire" data-ta="விசாரியுங்கள்">Enquire</h3><p data-en="Call, WhatsApp or walk in to our Palani office." data-ta="எங்கள் பழனி அலுவலகத்தை அழைக்கவும், WhatsApp செய்யவும் அல்லது நேரில் வரவும்.">Call, WhatsApp or walk in to our Palani office.</p></div></li>
+      <li class="reveal"><span class="node">02</span><div class="card step"><h3 data-en="Career plan" data-ta="தொழில் திட்டம்">Career plan</h3><p data-en="Fill a short form so we understand your goals and level." data-ta="உங்கள் இலக்குகளையும் நிலையையும் புரிந்துகொள்ள ஒரு சிறிய படிவத்தை நிரப்புங்கள்.">Fill a short form so we understand your goals and level.</p></div></li>
+      <li class="reveal"><span class="node">03</span><div class="card step"><h3 data-en="Learn & practise" data-ta="கற்று பயிற்சி செய்யுங்கள்">Learn &amp; practise</h3><p data-en="20 days of hands-on AI, English and soft-skill sessions." data-ta="20 நாட்கள் நேரடி AI, ஆங்கிலம் மற்றும் மென்திறன் வகுப்புகள்.">20 days of hands-on AI, English and soft-skill sessions.</p></div></li>
+      <li class="reveal"><span class="node">04</span><div class="card step"><h3 data-en="Get job-ready" data-ta="வேலைக்குத் தயாராகுங்கள்">Get job-ready</h3><p data-en="Leave with an AI-built resume and a clear job-search plan." data-ta="AI மூலம் உருவாக்கிய ரெஸ்யூம் மற்றும் தெளிவான வேலை தேடல் திட்டத்துடன் செல்லுங்கள்.">Leave with an AI-built resume and a clear job-search plan.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section" id="faq">
+  <div class="container faq-wrap">
+    <div class="section-head section-head-left reveal">
+      <span class="kicker">05 / FAQ</span>
+      <h2 data-en="Common <span class='grad'>questions.</span>" data-ta="அடிக்கடி கேட்கப்படும் <span class='grad'>கேள்விகள்.</span>">Common <span class="grad">questions.</span></h2>
+      <p data-en="Can't find your answer? Message us on WhatsApp and we'll reply the same day." data-ta="உங்கள் பதில் கிடைக்கவில்லையா? WhatsApp-இல் செய்தி அனுப்புங்கள், அதே நாளில் பதிலளிப்போம்.">Can't find your answer? Message us on WhatsApp and we'll reply the same day.</p>
+    </div>
+    <!-- <details> is a built-in HTML accordion: click the question to open/close -->
+    <div class="faq-list">
+      <details class="card faq reveal"><summary><span class="q">›</span><span data-en="Do I need computer knowledge to join?" data-ta="சேர கணினி அறிவு தேவையா?">Do I need computer knowledge to join?</span></summary><p data-en="No. We guide every level — from complete beginners to advanced learners." data-ta="இல்லை. முழு தொடக்கநிலையாளர்கள் முதல் மேம்பட்டவர்கள் வரை அனைவருக்கும் வழிகாட்டுகிறோம்.">No. We guide every level — from complete beginners to advanced learners.</p></details>
+      <details class="card faq reveal"><summary><span class="q">›</span><span data-en="Is the course taught in Tamil?" data-ta="பாடநெறி தமிழில் கற்பிக்கப்படுகிறதா?">Is the course taught in Tamil?</span></summary><p data-en="Yes. Classes are taught in Tamil with English, so concepts are easy to follow." data-ta="ஆம். கருத்துகள் எளிதாகப் புரிய தமிழும் ஆங்கிலமும் கலந்து வகுப்புகள் நடைபெறும்.">Yes. Classes are taught in Tamil with English, so concepts are easy to follow.</p></details>
+      <details class="card faq reveal"><summary><span class="q">›</span><span data-en="Will I get a certificate?" data-ta="சான்றிதழ் கிடைக்குமா?">Will I get a certificate?</span></summary><p data-en="Yes, every student who completes the course receives a certificate of completion." data-ta="ஆம், பாடநெறியை முடிக்கும் ஒவ்வொரு மாணவருக்கும் நிறைவுச் சான்றிதழ் வழங்கப்படும்.">Yes, every student who completes the course receives a certificate of completion.</p></details>
+      <details class="card faq reveal"><summary><span class="q">›</span><span data-en="What e-services do you offer?" data-ta="என்னென்ன இ-சேவைகள் வழங்குகிறீர்கள்?">What e-services do you offer?</span></summary><p data-en="Certificates, PAN, Aadhaar-related services, online applications, bill payments and more through our CSC centre." data-ta="சான்றிதழ்கள், PAN, ஆதார் தொடர்பான சேவைகள், ஆன்லைன் விண்ணப்பங்கள், கட்டணம் செலுத்துதல் மற்றும் பல — எங்கள் CSC மையம் மூலம்.">Certificates, PAN, Aadhaar-related services, online applications, bill payments and more through our CSC centre.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CALL TO ACTION: looks like an AI prompt box ================= -->
+<section class="cta-wrap">
+  <div class="container">
+    <div class="cta reveal">
+      <h2 data-en="Seats for Batch 01 are limited." data-ta="பேட்ச் 01-க்கு இடங்கள் குறைவு.">Seats for Batch 01 are limited.</h2>
+      <p data-en="Classes begin 19 November 2026 in Palani. Reserve your place today." data-ta="வகுப்புகள் 19 நவம்பர் 2026 அன்று பழனியில் தொடங்கும். இன்றே உங்கள் இடத்தை உறுதி செய்யுங்கள்.">Classes begin 19 November 2026 in Palani. Reserve your place today.</p>
+      <a href="#contact" class="prompt-box">
+        <svg class="pb-spark"><use href="#i-spark"/></svg>
+        <span class="pb-text" data-en="How do I start my career with AI?" data-ta="AI உடன் என் தொழில் வாழ்க்கையை எப்படி தொடங்குவது?">How do I start my career with AI?</span>
+        <span class="pb-send"><svg><use href="#i-arrow"/></svg></span>
+      </a>
+      <div class="cta-btns">
+        <a href="#contact" class="btn btn-glow"><span data-en="Reserve my seat" data-ta="இடத்தை முன்பதிவு செய்">Reserve my seat</span><svg><use href="#i-arrow"/></svg></a>
+        <a href="https://wa.me/91XXXXXXXXXX" class="btn btn-glass" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section" id="contact">
+  <div class="container contact">
+    <div class="contact-info reveal">
+      <span class="kicker">06 / <span data-en="Get in touch" data-ta="தொடர்பு கொள்ளுங்கள்">Get in touch</span></span>
+      <h2 data-en="Let's build <span class='grad'>your future.</span>" data-ta="உங்கள் <span class='grad'>எதிர்காலத்தை</span> உருவாக்குவோம்.">Let's build <span class="grad">your future.</span></h2>
+      <ul class="info-list">
+        <li><span class="info-icon"><svg><use href="#i-pin"/></svg></span><div><b data-en="Address" data-ta="முகவரி">Address</b><span>Thiru Aavinan Technologies, [Street / Landmark], Palani, Dindigul District, Tamil Nadu</span></div></li>
+        <li><span class="info-icon"><svg><use href="#i-phone"/></svg></span><div><b data-en="Phone" data-ta="தொலைபேசி">Phone</b><span>+91 XXXXX XXXXX</span></div></li>
+        <li><span class="info-icon"><svg><use href="#i-mail"/></svg></span><div><b data-en="Email" data-ta="மின்னஞ்சல்">Email</b><span>info@yourdomain.in</span></div></li>
+        <li><span class="info-icon"><svg><use href="#i-clock"/></svg></span><div><b data-en="Working hours" data-ta="வேலை நேரம்">Working hours</b><span>Mon – Sat · 9:30 AM – 7:30 PM</span></div></li>
+      </ul>
+    </div>
+
+    <form class="card form reveal" id="form">
+      <h3 data-en="Send an enquiry" data-ta="விசாரணை அனுப்புங்கள்">Send an enquiry</h3>
+      <div class="row2">
+        <label><span data-en="Your name" data-ta="உங்கள் பெயர்">Your name</span><input type="text" name="name" autocomplete="name" required></label>
+        <label><span data-en="Phone number" data-ta="தொலைபேசி எண்">Phone number</span><input type="tel" name="phone" autocomplete="tel" required></label>
+      </div>
+      <label><span data-en="I'm interested in" data-ta="எனக்கு ஆர்வம்">I'm interested in</span>
+        <select name="interest" required>
+          <option value="">Choose a service…</option>
+          <option>Gen AI Academy – Career Building course</option>
+          <option>Financial Solutions</option>
+          <option>Business Solutions</option>
+          <option>Common E-Services</option>
+        </select>
+      </label>
+      <label><span data-en="Message" data-ta="செய்தி">Message</span><textarea name="message" rows="4"></textarea></label>
+      <button class="btn btn-glow btn-block" type="submit"><span data-en="Send enquiry" data-ta="விசாரணையை அனுப்பு">Send enquiry</span><svg><use href="#i-arrow"/></svg></button>
+      <p class="form-msg" id="formMsg" role="status" data-en="✓ Thank you! We'll contact you shortly." data-ta="✓ நன்றி! விரைவில் உங்களைத் தொடர்புகொள்வோம்.">✓ Thank you! We'll contact you shortly.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container foot-grid">
+    <div class="foot-brand">
+      <span class="logo-plate logo-plate-lg"><img src="assets/images/logo-full-transparent.png" alt="Thiru Aavinan Technologies" width="203" height="56" loading="lazy"></span>
+      <p data-en="Gen AI Academy & digital services for Palani and Tamil Nadu. MSME registered." data-ta="பழனி மற்றும் தமிழ்நாட்டுக்கான ஜென் AI அகாடமி & டிஜிட்டல் சேவைகள். MSME பதிவு பெற்றது.">Gen AI Academy &amp; digital services for Palani and Tamil Nadu. MSME registered.</p>
+    </div>
+    <div><h4 data-en="Services" data-ta="சேவைகள்">Services</h4><ul><li><a href="#services">Gen AI Academy</a></li><li><a href="#services">Financial Solutions</a></li><li><a href="#services">Business Solutions</a></li><li><a href="#services">Common E-Services</a></li></ul></div>
+    <div><h4 data-en="Quick links" data-ta="விரைவு இணைப்புகள்">Quick links</h4><ul><li><a href="#home">Home</a></li><li><a href="#academy">Academy</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div><h4 data-en="Contact" data-ta="தொடர்புக்கு">Contact</h4><ul><li>Palani, Tamil Nadu</li><li>+91 XXXXX XXXXX</li><li>info@yourdomain.in</li></ul></div>
+  </div>
+  <div class="container foot-bottom">
+    <span>© <span id="yr"></span> Thiru Aavinan Technologies. All rights reserved.</span>
+    <span class="status"><span class="live-dot"></span><span data-en="Admissions open · Batch 01" data-ta="சேர்க்கை நடைபெறுகிறது · பேட்ச் 01">Admissions open · Batch 01</span></span>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp button (replace the number) -->
+<a class="wa" href="https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20know%20about%20the%20Gen%20AI%20course" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.7 6.4L3 29l6.8-1.8c1.9 1 4 1.6 6.2 1.6 7.2 0 13-5.8 13-13S23.2 3 16 3zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-4 1 1.1-3.9-.3-.4c-1.1-1.7-1.6-3.6-1.6-5.6 0-5.8 4.8-10.6 10.6-10.6S26.6 10.2 26.6 16 21.8 26.6 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1c-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.5-1.8-1.7-2.1s0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5s0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.7 1.2 3.1 1.4 3.3c.2.2 2.3 3.6 5.6 5 .8.3 1.4.5 1.9.7.8.2 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5c-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><svg><use href="#i-up"/></svg></button>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
