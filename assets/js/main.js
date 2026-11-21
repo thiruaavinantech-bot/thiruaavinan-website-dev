@@ -81,14 +81,14 @@ document.querySelectorAll('[data-count]').forEach(el => counters.observe(el));
 const term = document.getElementById('term');
 const PROMPT = '<span class="p">student@palani</span> <span class="b">~</span> $ ';
 const script = [
-  { cmd: 'thiru-ai enroll genai-career' },
+  { cmd: 'thiru-ai enroll career-launchpad' },
   { out: '<span class="c">◆</span> Fetching course details…', pause: 500 },
-  { out: '  <span class="g">✓</span> <span class="k">for       </span> <span class="v">college students · job seekers</span>' },
-  { out: '  <span class="g">✓</span> <span class="k">language  </span> <span class="v">Tamil + English</span>' },
-  { out: '  <span class="g">✓</span> <span class="k">duration  </span> <span class="v">20 days · classroom, Palani</span>' },
-  { out: '  <span class="g">✓</span> <span class="k">fee       </span> <span class="v">₹2,000</span>' },
-  { out: '  <span class="g">✓</span> <span class="k">starts    </span> <span class="y">19 Nov 2026</span>' },
-  { out: '<span class="c">◆</span> Installing: prompting · ai-resume · job-search · english', pause: 300 },
+  { out: '  <span class="g">✓</span> <span class="k">for       </span> <span class="v">students · job seekers</span>' },
+  { out: '  <span class="g">✓</span> <span class="k">language  </span> <span class="v">English + Tamil</span>' },
+  { out: '  <span class="g">✓</span> <span class="k">duration  </span> <span class="v">7 days · Palani or online</span>' },
+  { out: '  <span class="g">✓</span> <span class="k">fee       </span> <span class="v">₹499 only</span>' },
+  { out: '  <span class="g">✓</span> <span class="k">seats     </span> <span class="y">limited · first batch</span>' },
+  { out: '<span class="c">◆</span> Installing: career-awareness · resume · interview-prep', pause: 300 },
   { bar: true },
   { out: '<span class="g">✔ Career plan ready.</span> Next step → <span class="y">reserve your seat ↓</span>', pause: 300 },
 ];
@@ -122,19 +122,6 @@ async function runTerminal() {
   term.appendChild(last);
 }
 runTerminal();
-
-// ---------- Countdown to the first batch (19 Nov 2026, 10:00 AM IST) ----------
-const target = new Date('2026-11-19T10:00:00+05:30');
-const pad = n => String(n).padStart(2, '0');
-function tick() {
-  const left = Math.max(0, target - new Date());
-  document.getElementById('cd-d').textContent = Math.floor(left / 864e5);
-  document.getElementById('cd-h').textContent = pad(Math.floor(left % 864e5 / 36e5));
-  document.getElementById('cd-m').textContent = pad(Math.floor(left % 36e5 / 6e4));
-  document.getElementById('cd-s').textContent = pad(Math.floor(left % 6e4 / 1e3));
-}
-tick();
-setInterval(tick, 1000);
 
 // ---------- Contact form (demo only — connect to WhatsApp / Google Form / backend later) ----------
 document.getElementById('form').onsubmit = e => {
