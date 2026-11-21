@@ -47,7 +47,7 @@
 
 /* ---------- 2. Base ---------- */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
 body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
 body.ta{font-family:var(--font-ta);line-height:1.8}        /* Tamil needs a little more line height */
 body.ta h1,body.ta h2,body.ta h3{letter-spacing:0;line-height:1.35}
@@ -116,17 +116,19 @@ body.ta .kicker{font-family:var(--font-ta);letter-spacing:0;text-transform:none}
 /* ---------- 4. Header ---------- */
 .site-header{position:fixed;inset:0 0 auto;z-index:100;border-bottom:1px solid transparent;transition:background .3s,border-color .3s,box-shadow .3s}
 .site-header.scrolled{background:rgba(255,255,255,.78);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-color:var(--border);box-shadow:0 8px 30px -20px rgba(40,48,120,.35)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:84px;gap:16px}
 
 /* The logo sits straight on the light background.
    It uses logo-full-transparent.png (a see-through copy of the full logo),
    so no white box shows on the tinted header. */
 .logo-plate{display:inline-flex;align-items:center;flex-shrink:0}
-.logo-plate img{height:40px;width:auto}
+.logo-plate img{height:50px;width:auto}
+.site-header .logo-plate img{height:50px}
+@media (min-width:768px){.site-header .logo-plate img{height:60px}}
 .logo-plate-lg img{height:56px}
 
 /* Mobile menu: a panel that slides down under the header */
-.menu{position:fixed;top:72px;left:0;right:0;display:flex;flex-direction:column;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);padding:10px 16px 20px;border-bottom:1px solid var(--border);box-shadow:0 20px 30px -20px rgba(0,0,0,.2);transform:translateY(-120%);visibility:hidden;transition:transform .35s ease,visibility .35s}
+.menu{position:fixed;top:84px;left:0;right:0;display:flex;flex-direction:column;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);padding:10px 16px 20px;border-bottom:1px solid var(--border);box-shadow:0 20px 30px -20px rgba(0,0,0,.2);transform:translateY(-120%);visibility:hidden;transition:transform .35s ease,visibility .35s}
 .menu.open{transform:none;visibility:visible}
 .menu a{padding:13px 4px;font-weight:600;border-bottom:1px solid var(--border);color:var(--text)}
 .menu a:last-child{border:none}
