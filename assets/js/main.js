@@ -139,23 +139,35 @@ const FORM_TEXT = {
           ta: 'மன்னிக்கவும், உங்கள் விசாரணையை அனுப்ப முடியவில்லை. 80727 47602-ஐ அழைக்கவும் அல்லது WhatsApp செய்யவும்.' },
 };
 
+const SEND_TIMEOUT_MS = 20000;   // give up after 20 seconds and show the error message
+
 async function sendEmail(data) {
-  const res = await fetch('https://formsubmit.co/ajax/' + ENQUIRY_EMAIL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({
-      _subject: 'Website enquiry: ' + data.interest + ' — ' + data.name,
-      _template: 'table',
-      _captcha: 'false',
-      Name: data.name,
-      Phone: data.phone,
-      'Interested in': data.interest,
-      Message: data.message || '-',
-      Language: data.language === 'ta' ? 'Tamil' : 'English',
-    }),
-  });
-  const reply = await res.json().catch(() => ({}));
-  if (!res.ok || String(reply.success) === 'false') throw new Error(reply.message || 'Send failed');
+  // Plain form data (not JSON), so the browser sends it straight away
+  // without an extra permission check first.
+  const body = new FormData();
+  body.append('_subject', 'Website enquiry: ' + data.interest + ' — ' + data.name);
+  body.append('_template', 'table');
+  body.append('_captcha', 'false');
+  body.append('Name', data.name);
+  body.append('Phone', data.phone);
+  body.append('Interested in', data.interest);
+  body.append('Message', data.message || '-');
+  body.append('Language', data.language === 'ta' ? 'Tamil' : 'English');
+
+  const stop = new AbortController();
+  const timer = setTimeout(() => stop.abort(), SEND_TIMEOUT_MS);
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/' + ENQUIRY_EMAIL, {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body,
+      signal: stop.signal,
+    });
+    const reply = await res.json().catch(() => ({}));
+    if (!res.ok || String(reply.success) === 'false') throw new Error(reply.message || 'Send failed');
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 function saveToSheet(data) {
@@ -200,6 +212,7 @@ document.getElementById('form').onsubmit = async e => {
     confetti(btn.left + btn.width / 2, btn.top + btn.height / 2);   // celebrate!
     f.reset();
   } catch (err) {
+    console.warn('Enquiry not sent:', err.message);
     showFormMsg('fail', true);   // keep what they typed so they can try again
   } finally {
     submit.disabled = false;
