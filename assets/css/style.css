@@ -17,7 +17,7 @@
   --ink:#0d0f1c;
   --text:#262a3b;
   --muted:#5f6680;
-  --dim:#9097ad;
+  --dim:#6b7183;
 
   /* Brand: logo navy + a bright AI palette */
   --navy:#0b2a94;
@@ -125,6 +125,22 @@ body.ta .kicker{font-family:var(--font-ta);letter-spacing:0;text-transform:none}
 .logo-plate img{height:50px;width:auto}
 .site-header .logo-plate img{height:50px}
 @media (min-width:768px){.site-header .logo-plate img{height:60px}}
+/* Small phones: smaller logo and tighter buttons so the menu button always fits */
+@media (max-width:400px){
+  .site-header .logo-plate img{height:40px}
+  .nav{gap:8px}
+  .nav-actions{gap:6px}
+  .lang-switch span{padding:5px 8px}
+}
+@media (max-width:340px){
+  .site-header .logo-plate img{height:34px}
+  .lang-switch span{padding:4px 6px}
+  .menu-btn{width:38px;height:38px}
+}
+/* Skip link: hidden until a keyboard user presses Tab */
+.skip-link{position:fixed;left:12px;top:-60px;z-index:200;padding:10px 16px;border-radius:10px;background:var(--ink);color:#fff;font-weight:700;transition:top .2s}
+.skip-link:focus{top:12px}
+main:focus{outline:none}
 .logo-plate-lg img{height:56px}
 
 /* Mobile menu: a panel that slides down under the header */
@@ -287,10 +303,6 @@ body.ta .hero h1{font-size:clamp(2rem,5vw,3.4rem)}
 .price-name{font-size:1.15rem;margin-top:18px;color:#fff}
 .price-card .price{margin-top:8px}
 .price-phone{display:block;font-family:var(--mono);font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:6px;text-decoration:none}
-.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.countdown div{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:10px 4px;text-align:center}
-.countdown b{display:block;font-family:var(--mono);font-size:1.45rem;color:#fff;line-height:1.3}
-.countdown span{font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;opacity:.8}
 .includes{margin:24px 0 26px;display:grid;gap:12px;font-size:.94rem}
 .includes li{display:flex;gap:10px;align-items:center}
 .includes svg{width:18px;height:18px;color:#bbf7d0;stroke-width:2.4}

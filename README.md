@@ -12,10 +12,11 @@ This is the **development version**: a static site made with plain HTML, CSS and
 index.html                  ← page content (English + Tamil text)
 assets/
   css/style.css             ← all design: colours, layout, animations, mobile view
-  js/main.js                ← behaviour: menu, language switch, terminal, countdown, effects
+  js/main.js                ← behaviour: menu, language switch, terminal, form checks, effects
   images/
     logo-full-transparent.png  ← header/footer logo (see-through background)
     logo-icon.png              ← favicon / phone home-screen icon
+    share.png                  ← 1200×630 picture shown when the link is shared (WhatsApp, Facebook)
 content/logo/               ← original logo files (keep untouched)
 ```
 

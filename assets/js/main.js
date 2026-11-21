@@ -23,9 +23,14 @@ const menuBtn = document.getElementById('menuBtn');
 function setMenu(open) {
   menu.classList.toggle('open', open);
   menuBtn.setAttribute('aria-expanded', open);
+  menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
 }
 menuBtn.onclick = () => setMenu(!menu.classList.contains('open'));
 menu.querySelectorAll('a').forEach(a => a.onclick = () => setMenu(false));
+// Esc closes the menu and puts the keyboard focus back on the menu button
+addEventListener('keydown', e => {
+  if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); menuBtn.focus(); }
+});
 
 // ---------- Language switch (English / Tamil) ----------
 // Every element with data-en and data-ta gets its text swapped.
@@ -131,6 +136,20 @@ document.getElementById('form').onsubmit = e => {
   confetti(btn.left + btn.width / 2, btn.top + btn.height / 2);   // celebrate!
   e.target.reset();
 };
+
+// ---------- Phone number check ----------
+// Accepts 10–15 digits (spaces, - and a leading + allowed). Shows the message in the page language.
+const phoneInput = document.querySelector('#form input[name=phone]');
+function checkPhone() {
+  const value = phoneInput.value.trim();
+  const digits = value.replace(/\D/g, '').length;
+  const bad = value && (digits < 10 || digits > 13 || phoneInput.validity.patternMismatch);
+  phoneInput.setCustomValidity(!bad ? '' : document.documentElement.lang === 'ta'
+    ? 'சரியான தொலைபேசி எண்ணை உள்ளிடவும் (குறைந்தது 10 இலக்கங்கள்).'
+    : 'Please enter a valid phone number (at least 10 digits).');
+}
+phoneInput.addEventListener('input', checkPhone);
+phoneInput.addEventListener('invalid', checkPhone);
 
 // ---------- Current year in the footer ----------
 document.getElementById('yr').textContent = new Date().getFullYear();
