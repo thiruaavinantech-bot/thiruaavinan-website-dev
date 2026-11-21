@@ -123,100 +123,13 @@ async function runTerminal() {
 }
 runTerminal();
 
-// ---------- Contact form → email (+ optional Google Sheet) ----------
-// "Send enquiry" emails the details to ENQUIRY_EMAIL through FormSubmit (formsubmit.co).
-// The very first enquiry sends an "Activate Form" email to that inbox — click it once.
-// Optional: also save each enquiry to our Google Sheet. Set SHEET_URL to the Web app URL
-// from google-apps-script/enquiries.gs — see README "Enquiry form". Empty = skip.
-const ENQUIRY_EMAIL = 'info@thiruaavinantech.com';
-const SHEET_URL = '';
-
-const FORM_TEXT = {
-  sending: { en: 'Sending…', ta: 'அனுப்புகிறது…' },
-  ok: { en: "✓ Thank you! Your enquiry has been sent. We'll contact you shortly.",
-        ta: '✓ நன்றி! உங்கள் விசாரணை அனுப்பப்பட்டது. விரைவில் உங்களைத் தொடர்புகொள்வோம்.' },
-  fail: { en: "Sorry, your enquiry couldn't be sent. Please call or WhatsApp 80727 47602.",
-          ta: 'மன்னிக்கவும், உங்கள் விசாரணையை அனுப்ப முடியவில்லை. 80727 47602-ஐ அழைக்கவும் அல்லது WhatsApp செய்யவும்.' },
-};
-
-const SEND_TIMEOUT_MS = 20000;   // give up after 20 seconds and show the error message
-
-async function sendEmail(data) {
-  // Plain form data (not JSON), so the browser sends it straight away
-  // without an extra permission check first.
-  const body = new FormData();
-  body.append('_subject', 'Website enquiry: ' + data.interest + ' — ' + data.name);
-  body.append('_template', 'table');
-  body.append('_captcha', 'false');
-  body.append('Name', data.name);
-  body.append('Phone', data.phone);
-  body.append('Interested in', data.interest);
-  body.append('Message', data.message || '-');
-  body.append('Language', data.language === 'ta' ? 'Tamil' : 'English');
-
-  const stop = new AbortController();
-  const timer = setTimeout(() => stop.abort(), SEND_TIMEOUT_MS);
-  try {
-    const res = await fetch('https://formsubmit.co/ajax/' + ENQUIRY_EMAIL, {
-      method: 'POST',
-      headers: { Accept: 'application/json' },
-      body,
-      signal: stop.signal,
-    });
-    const reply = await res.json().catch(() => ({}));
-    if (!res.ok || String(reply.success) === 'false') throw new Error(reply.message || 'Send failed');
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
-function saveToSheet(data) {
-  if (!SHEET_URL) return;
-  fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(data) }).catch(() => {});
-}
-
-// Show a message under the form (kept in both languages so the EN/தமிழ் switch still works).
-function showFormMsg(key, isError) {
-  const msg = document.getElementById('formMsg');
-  msg.dataset.en = FORM_TEXT[key].en;
-  msg.dataset.ta = FORM_TEXT[key].ta;
-  msg.textContent = document.documentElement.lang === 'ta' ? FORM_TEXT[key].ta : FORM_TEXT[key].en;
-  msg.classList.toggle('error', !!isError);
-  msg.classList.add('show');
-}
-
-document.getElementById('form').onsubmit = async e => {
+// ---------- Contact form (demo only — connect to WhatsApp / Google Form / backend later) ----------
+document.getElementById('form').onsubmit = e => {
   e.preventDefault();
-  const f = e.target;
-  const field = name => (f.elements[name].value || '').trim();
-  const submit = f.querySelector('button[type=submit]');
-
-  // A hidden box that people never see; spam bots fill it in. If it has text, ignore the enquiry.
-  if (field('_honey')) { f.reset(); return; }
-
-  const enquiry = {
-    name: field('name'),
-    phone: field('phone'),
-    interest: field('interest'),
-    message: field('message'),
-    language: document.documentElement.lang,
-  };
-
-  submit.disabled = true;
-  showFormMsg('sending');
-  try {
-    await sendEmail(enquiry);
-    saveToSheet(enquiry);
-    showFormMsg('ok');
-    const btn = submit.getBoundingClientRect();
-    confetti(btn.left + btn.width / 2, btn.top + btn.height / 2);   // celebrate!
-    f.reset();
-  } catch (err) {
-    console.warn('Enquiry not sent:', err.message);
-    showFormMsg('fail', true);   // keep what they typed so they can try again
-  } finally {
-    submit.disabled = false;
-  }
+  document.getElementById('formMsg').classList.add('show');
+  const btn = e.target.querySelector('button[type=submit]').getBoundingClientRect();
+  confetti(btn.left + btn.width / 2, btn.top + btn.height / 2);   // celebrate!
+  e.target.reset();
 };
 
 // ---------- Current year in the footer ----------
