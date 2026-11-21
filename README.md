@@ -32,4 +32,3 @@ then visit http://localhost:5500
 ## Still to do before going live
 
 - Have a Tamil speaker review the Tamil translations.
-- Connect the enquiry form to a real destination (WhatsApp, Google Form or email).

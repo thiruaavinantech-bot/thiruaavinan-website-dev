@@ -123,13 +123,32 @@ async function runTerminal() {
 }
 runTerminal();
 
-// ---------- Contact form (demo only — connect to WhatsApp / Google Form / backend later) ----------
+// ---------- Contact form → WhatsApp ----------
+// The enquiry is typed into a WhatsApp message to our number (80727 47602).
+// WhatsApp opens with it filled in; the visitor taps Send to deliver it.
+const WHATSAPP_NUMBER = '918072747602';
 document.getElementById('form').onsubmit = e => {
   e.preventDefault();
+  const f = e.target;
+  const field = name => (f.elements[name].value || '').trim();
+  const lines = [
+    'Hi, I have an enquiry from the website.',
+    '',
+    'Name: ' + field('name'),
+    'Phone: ' + field('phone'),
+    'Interested in: ' + field('interest'),
+  ];
+  if (field('message')) lines.push('Message: ' + field('message'));
+  const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+
+  // Open WhatsApp in a new tab; if the browser blocks that, open it in this tab.
+  const win = window.open(url, '_blank', 'noopener');
+  if (!win) location.href = url;
+
   document.getElementById('formMsg').classList.add('show');
-  const btn = e.target.querySelector('button[type=submit]').getBoundingClientRect();
+  const btn = f.querySelector('button[type=submit]').getBoundingClientRect();
   confetti(btn.left + btn.width / 2, btn.top + btn.height / 2);   // celebrate!
-  e.target.reset();
+  f.reset();
 };
 
 // ---------- Current year in the footer ----------
