@@ -87,7 +87,7 @@ const script = [
   { out: '  <span class="g">✓</span> <span class="k">language  </span> <span class="v">English + Tamil</span>' },
   { out: '  <span class="g">✓</span> <span class="k">duration  </span> <span class="v">7 days · Palani or online</span>' },
   { out: '  <span class="g">✓</span> <span class="k">fee       </span> <span class="v">₹499 only</span>' },
-  { out: '  <span class="g">✓</span> <span class="k">seats     </span> <span class="y">limited · first batch</span>' },
+  { out: '  <span class="g">✓</span> <span class="k">seats     </span> <span class="y">limited</span>' },
   { out: '<span class="c">◆</span> Installing: career-awareness · resume · interview-prep', pause: 300 },
   { bar: true },
   { out: '<span class="g">✔ Career plan ready.</span> Next step → <span class="y">reserve your seat ↓</span>', pause: 300 },

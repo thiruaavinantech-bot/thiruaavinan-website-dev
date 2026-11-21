@@ -232,7 +232,7 @@ body.ta .hero h1{font-size:clamp(2rem,5vw,3.4rem)}
 .stats dd{color:var(--muted);font-size:.88rem;font-weight:500}
 
 /* ---------- 6. Services ("bento" grid) ---------- */
-.bento{display:grid;gap:18px}
+.bento{display:grid;gap:18px;grid-auto-rows:1fr}
 .svc{display:flex;flex-direction:column;padding:28px}
 .svc:hover{transform:translateY(-6px)}
 /* coloured line on top of each card */
@@ -461,8 +461,7 @@ textarea{resize:vertical}
 
 /* Desktops (1100px and up) */
 @media (min-width:1100px){
-  .bento{grid-template-columns:repeat(3,1fr)}
-  .svc-wide{grid-column:span 2}
+  .bento{grid-template-columns:repeat(2,1fr)}
   .features{grid-template-columns:repeat(3,1fr)}
   .foot-grid{grid-template-columns:1.5fr 1fr 1fr 1fr}
 }
