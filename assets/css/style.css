@@ -303,7 +303,7 @@ body.ta .hero h1{font-size:clamp(2rem,5vw,3.4rem)}
 .f-icon svg{width:22px;height:22px}
 .feature h3{font-size:1.1rem;margin-bottom:8px}
 .feature p{color:var(--muted);font-size:.94rem}
-.vm{display:grid;gap:16px;margin-bottom:16px}
+.vm{display:grid;gap:16px}
 .vm-card{padding:26px}
 .vm-label{display:block;font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--violet);margin-bottom:8px;font-weight:600}
 .vm-card p{color:var(--ink);font-size:1rem}
@@ -313,7 +313,13 @@ body.ta .hero h1{font-size:clamp(2rem,5vw,3.4rem)}
 .vm-role{display:block;font-size:.85rem;color:var(--muted);margin-bottom:8px}
 .trainer p{color:var(--muted);font-size:.92rem}
 .info-list a{color:inherit}
-@media (min-width:900px){.vm{grid-template-columns:1fr 1fr 1.4fr}}
+.vm-stack{display:grid;gap:16px}
+.trainer{padding:30px}
+.trainer .avatar{width:64px;height:64px;font-size:1.2rem}
+.trainer b{font-size:1.15rem}
+.trainer p{font-size:.98rem}
+.sub-head{font-size:1.3rem;margin:56px 0 20px;text-align:center}
+@media (min-width:900px){.vm{grid-template-columns:1fr 1fr;align-items:stretch}.trainer{align-items:center}}
 
 /* ---------- 9. Process ("pipeline") ---------- */
 .pipeline{display:grid;gap:18px;position:relative}
