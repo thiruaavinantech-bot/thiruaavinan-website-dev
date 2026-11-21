@@ -34,11 +34,21 @@ then visit http://localhost:5500
 
 When someone presses **Send on WhatsApp**:
 
-1. The enquiry is saved as a new row in the **Enquiries** Google Sheet (once set up below),
-   so it is kept even if the visitor never sends the WhatsApp message.
-2. WhatsApp opens with the enquiry typed in, addressed to 80727 47602. The visitor taps Send.
+1. The enquiry is **emailed to info@thiruaavinantech.com** straight away (through the free
+   FormSubmit service, formsubmit.co), so it is kept even if the visitor never sends the WhatsApp message.
+2. Optional: it is also saved as a new row in the **Enquiries** Google Sheet (once set up below).
+3. WhatsApp opens with the enquiry typed in, addressed to 80727 47602. The visitor taps Send.
 
-### One-time setup of the Google Sheet
+A hidden "honeypot" box catches spam bots: if it is filled in, the enquiry is ignored.
+
+### One-time email activation
+
+The **first** enquiry sent from the live website makes FormSubmit email info@thiruaavinantech.com
+a message titled "Action Required: Activate FormSubmit". Open it and click **Activate Form**.
+Enquiries start arriving after that (check the Spam folder the first time).
+To change the address, edit `ENQUIRY_EMAIL` in `assets/js/main.js`.
+
+### Optional: one-time setup of the Google Sheet
 
 1. Go to https://sheets.new and name the sheet "Website enquiries".
 2. Click **Extensions → Apps Script**. Delete the sample code and paste in the whole of
@@ -56,4 +66,5 @@ so the same URL keeps working.
 ## Still to do before going live
 
 - Have a Tamil speaker review the Tamil translations.
-- Set up the enquiries Google Sheet and paste its URL into `SHEET_URL` (see "Enquiry form").
+- Send one test enquiry and click **Activate Form** in the FormSubmit email (see "Enquiry form").
+- Optional: set up the enquiries Google Sheet and paste its URL into `SHEET_URL` (see "Enquiry form").

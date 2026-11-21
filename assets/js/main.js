@@ -123,13 +123,35 @@ async function runTerminal() {
 }
 runTerminal();
 
-// ---------- Contact form → Google Sheet + WhatsApp ----------
-// 1. The enquiry is saved to our Google Sheet straight away (so it is never lost,
-//    even if the visitor closes WhatsApp). Set SHEET_URL to the Web app URL from
+// ---------- Contact form → email + Google Sheet + WhatsApp ----------
+// 1. The enquiry is emailed to ENQUIRY_EMAIL straight away through FormSubmit
+//    (formsubmit.co), so it is never lost even if the visitor closes WhatsApp.
+//    The very first enquiry sends an "Activate" email to that inbox — click it once.
+// 2. Optional: also saved to our Google Sheet. Set SHEET_URL to the Web app URL from
 //    google-apps-script/enquiries.gs — see README "Enquiry form". Empty = skip.
-// 2. WhatsApp opens with the enquiry typed in; the visitor taps Send.
+// 3. WhatsApp opens with the enquiry typed in; the visitor taps Send.
 const WHATSAPP_NUMBER = '918072747602';
+const ENQUIRY_EMAIL = 'info@thiruaavinantech.com';
 const SHEET_URL = '';
+
+function sendEmail(data) {
+  if (!ENQUIRY_EMAIL) return;
+  fetch('https://formsubmit.co/ajax/' + ENQUIRY_EMAIL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    keepalive: true,
+    body: JSON.stringify({
+      _subject: 'Website enquiry: ' + data.interest + ' — ' + data.name,
+      _template: 'table',
+      _captcha: 'false',
+      Name: data.name,
+      Phone: data.phone,
+      'Interested in': data.interest,
+      Message: data.message || '-',
+      Language: data.language === 'ta' ? 'Tamil' : 'English',
+    }),
+  }).catch(() => {});
+}
 
 function saveToSheet(data) {
   if (!SHEET_URL) return;
@@ -150,13 +172,18 @@ document.getElementById('form').onsubmit = e => {
     'Interested in: ' + field('interest'),
   ];
   if (field('message')) lines.push('Message: ' + field('message'));
-  saveToSheet({
+  // A hidden box that people never see; spam bots fill it in. If it has text, ignore the enquiry.
+  if (field('_honey')) { f.reset(); return; }
+
+  const enquiry = {
     name: field('name'),
     phone: field('phone'),
     interest: field('interest'),
     message: field('message'),
     language: document.documentElement.lang,
-  });
+  };
+  sendEmail(enquiry);
+  saveToSheet(enquiry);
 
   const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
 
