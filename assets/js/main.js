@@ -123,10 +123,21 @@ async function runTerminal() {
 }
 runTerminal();
 
-// ---------- Contact form → WhatsApp ----------
-// The enquiry is typed into a WhatsApp message to our number (80727 47602).
-// WhatsApp opens with it filled in; the visitor taps Send to deliver it.
+// ---------- Contact form → Google Sheet + WhatsApp ----------
+// 1. The enquiry is saved to our Google Sheet straight away (so it is never lost,
+//    even if the visitor closes WhatsApp). Set SHEET_URL to the Web app URL from
+//    google-apps-script/enquiries.gs — see README "Enquiry form". Empty = skip.
+// 2. WhatsApp opens with the enquiry typed in; the visitor taps Send.
 const WHATSAPP_NUMBER = '918072747602';
+const SHEET_URL = '';
+
+function saveToSheet(data) {
+  if (!SHEET_URL) return;
+  const body = new URLSearchParams(data);
+  // sendBeacon keeps sending even if the page switches to WhatsApp.
+  if (navigator.sendBeacon && navigator.sendBeacon(SHEET_URL, body)) return;
+  fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', keepalive: true, body }).catch(() => {});
+}
 document.getElementById('form').onsubmit = e => {
   e.preventDefault();
   const f = e.target;
@@ -139,6 +150,14 @@ document.getElementById('form').onsubmit = e => {
     'Interested in: ' + field('interest'),
   ];
   if (field('message')) lines.push('Message: ' + field('message'));
+  saveToSheet({
+    name: field('name'),
+    phone: field('phone'),
+    interest: field('interest'),
+    message: field('message'),
+    language: document.documentElement.lang,
+  });
+
   const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
 
   // Open WhatsApp in a new tab; if the browser blocks that, open it in this tab.
