@@ -123,23 +123,26 @@ async function runTerminal() {
 }
 runTerminal();
 
-// ---------- Contact form → email + Google Sheet + WhatsApp ----------
-// 1. The enquiry is emailed to ENQUIRY_EMAIL straight away through FormSubmit
-//    (formsubmit.co), so it is never lost even if the visitor closes WhatsApp.
-//    The very first enquiry sends an "Activate" email to that inbox — click it once.
-// 2. Optional: also saved to our Google Sheet. Set SHEET_URL to the Web app URL from
-//    google-apps-script/enquiries.gs — see README "Enquiry form". Empty = skip.
-// 3. WhatsApp opens with the enquiry typed in; the visitor taps Send.
-const WHATSAPP_NUMBER = '918072747602';
+// ---------- Contact form → email (+ optional Google Sheet) ----------
+// "Send enquiry" emails the details to ENQUIRY_EMAIL through FormSubmit (formsubmit.co).
+// The very first enquiry sends an "Activate Form" email to that inbox — click it once.
+// Optional: also save each enquiry to our Google Sheet. Set SHEET_URL to the Web app URL
+// from google-apps-script/enquiries.gs — see README "Enquiry form". Empty = skip.
 const ENQUIRY_EMAIL = 'info@thiruaavinantech.com';
 const SHEET_URL = '';
 
-function sendEmail(data) {
-  if (!ENQUIRY_EMAIL) return;
-  fetch('https://formsubmit.co/ajax/' + ENQUIRY_EMAIL, {
+const FORM_TEXT = {
+  sending: { en: 'Sending…', ta: 'அனுப்புகிறது…' },
+  ok: { en: "✓ Thank you! Your enquiry has been sent. We'll contact you shortly.",
+        ta: '✓ நன்றி! உங்கள் விசாரணை அனுப்பப்பட்டது. விரைவில் உங்களைத் தொடர்புகொள்வோம்.' },
+  fail: { en: "Sorry, your enquiry couldn't be sent. Please call or WhatsApp 80727 47602.",
+          ta: 'மன்னிக்கவும், உங்கள் விசாரணையை அனுப்ப முடியவில்லை. 80727 47602-ஐ அழைக்கவும் அல்லது WhatsApp செய்யவும்.' },
+};
+
+async function sendEmail(data) {
+  const res = await fetch('https://formsubmit.co/ajax/' + ENQUIRY_EMAIL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    keepalive: true,
     body: JSON.stringify({
       _subject: 'Website enquiry: ' + data.interest + ' — ' + data.name,
       _template: 'table',
@@ -150,28 +153,32 @@ function sendEmail(data) {
       Message: data.message || '-',
       Language: data.language === 'ta' ? 'Tamil' : 'English',
     }),
-  }).catch(() => {});
+  });
+  const reply = await res.json().catch(() => ({}));
+  if (!res.ok || String(reply.success) === 'false') throw new Error(reply.message || 'Send failed');
 }
 
 function saveToSheet(data) {
   if (!SHEET_URL) return;
-  const body = new URLSearchParams(data);
-  // sendBeacon keeps sending even if the page switches to WhatsApp.
-  if (navigator.sendBeacon && navigator.sendBeacon(SHEET_URL, body)) return;
-  fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', keepalive: true, body }).catch(() => {});
+  fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(data) }).catch(() => {});
 }
-document.getElementById('form').onsubmit = e => {
+
+// Show a message under the form (kept in both languages so the EN/தமிழ் switch still works).
+function showFormMsg(key, isError) {
+  const msg = document.getElementById('formMsg');
+  msg.dataset.en = FORM_TEXT[key].en;
+  msg.dataset.ta = FORM_TEXT[key].ta;
+  msg.textContent = document.documentElement.lang === 'ta' ? FORM_TEXT[key].ta : FORM_TEXT[key].en;
+  msg.classList.toggle('error', !!isError);
+  msg.classList.add('show');
+}
+
+document.getElementById('form').onsubmit = async e => {
   e.preventDefault();
   const f = e.target;
   const field = name => (f.elements[name].value || '').trim();
-  const lines = [
-    'Hi, I have an enquiry from the website.',
-    '',
-    'Name: ' + field('name'),
-    'Phone: ' + field('phone'),
-    'Interested in: ' + field('interest'),
-  ];
-  if (field('message')) lines.push('Message: ' + field('message'));
+  const submit = f.querySelector('button[type=submit]');
+
   // A hidden box that people never see; spam bots fill it in. If it has text, ignore the enquiry.
   if (field('_honey')) { f.reset(); return; }
 
@@ -182,19 +189,21 @@ document.getElementById('form').onsubmit = e => {
     message: field('message'),
     language: document.documentElement.lang,
   };
-  sendEmail(enquiry);
-  saveToSheet(enquiry);
 
-  const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
-
-  // Open WhatsApp in a new tab; if the browser blocks that, open it in this tab.
-  const win = window.open(url, '_blank', 'noopener');
-  if (!win) location.href = url;
-
-  document.getElementById('formMsg').classList.add('show');
-  const btn = f.querySelector('button[type=submit]').getBoundingClientRect();
-  confetti(btn.left + btn.width / 2, btn.top + btn.height / 2);   // celebrate!
-  f.reset();
+  submit.disabled = true;
+  showFormMsg('sending');
+  try {
+    await sendEmail(enquiry);
+    saveToSheet(enquiry);
+    showFormMsg('ok');
+    const btn = submit.getBoundingClientRect();
+    confetti(btn.left + btn.width / 2, btn.top + btn.height / 2);   // celebrate!
+    f.reset();
+  } catch (err) {
+    showFormMsg('fail', true);   // keep what they typed so they can try again
+  } finally {
+    submit.disabled = false;
+  }
 };
 
 // ---------- Current year in the footer ----------

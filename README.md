@@ -32,12 +32,13 @@ then visit http://localhost:5500
 
 ## Enquiry form
 
-When someone presses **Send on WhatsApp**:
+When someone presses **Send enquiry**:
 
-1. The enquiry is **emailed to info@thiruaavinantech.com** straight away (through the free
-   FormSubmit service, formsubmit.co), so it is kept even if the visitor never sends the WhatsApp message.
+1. The enquiry is **emailed to info@thiruaavinantech.com** through the free FormSubmit
+   service (formsubmit.co). The visitor sees "Thank you! Your enquiry has been sent."
+   If sending fails, they see a message asking them to call or WhatsApp 80727 47602
+   instead, and what they typed is kept.
 2. Optional: it is also saved as a new row in the **Enquiries** Google Sheet (once set up below).
-3. WhatsApp opens with the enquiry typed in, addressed to 80727 47602. The visitor taps Send.
 
 A hidden "honeypot" box catches spam bots: if it is filled in, the enquiry is ignored.
 
@@ -46,6 +47,7 @@ A hidden "honeypot" box catches spam bots: if it is filled in, the enquiry is ig
 The **first** enquiry sent from the live website makes FormSubmit email info@thiruaavinantech.com
 a message titled "Action Required: Activate FormSubmit". Open it and click **Activate Form**.
 Enquiries start arriving after that (check the Spam folder the first time).
+Until it is activated, visitors see the "couldn't be sent" message, so activate it before sharing the site.
 To change the address, edit `ENQUIRY_EMAIL` in `assets/js/main.js`.
 
 ### Optional: one-time setup of the Google Sheet
